@@ -1,17 +1,20 @@
-package hdt3.src.main.java.edu.uvg.htd3;
+package edu.uvg.htd3;
+
 import java.util.Arrays;
 import java.util.Random;
 
-import hdt3.src.main.java.sorts.RadixSort;
-import hdt3.src.main.java.sorts.SelectionSort;
-import hdt3.src.main.java.sorts.GnomeSort;
+import sorts.GnomeSort;
+import sorts.MergeSort;
+import sorts.QuickSort;
+import sorts.RadixSort;
+import sorts.SelectionSort;
 
 
 public class Main1 {
 
     public static void main(String[] args) {
 
-        int n = 3000; // Tamaño del arreglo a ordenar
+        int n = 3000;
         Random random = new Random();
 
         // Arreglo base
@@ -22,44 +25,54 @@ public class Main1 {
 
         int[] radixArray = Arrays.copyOf(baseArray, baseArray.length);
         Integer[] selectionArray = new Integer[n];
+        Integer[] mergeArray = new Integer[n];
+        Integer[] quickArray = new Integer[n];
+        Integer[] gnomeArray = new Integer[n];
 
         for (int i = 0; i < n; i++) {
             selectionArray[i] = baseArray[i];
+            mergeArray[i] = baseArray[i];
+            quickArray[i] = baseArray[i];
         }
 
-        int[] gnomeArray = Arrays.copyOf(baseArray, baseArray.length);
+        for (int i = 0; i < n; i++) {
+        gnomeArray[i] = baseArray[i];
+        }
 
-
-        // ---------------- RADIX SORT ----------------
+        // RADIX
         long startRadix = System.nanoTime();
         RadixSort.sort(radixArray);
-        long endRadix = System.nanoTime();
+        long timeRadix = System.nanoTime() - startRadix;
 
-        long timeRadix = endRadix - startRadix;
-
-        // ---------------- SELECTION SORT ----------------
+        // SELECTION
         long startSelection = System.nanoTime();
         SelectionSort.sort(selectionArray);
-        long endSelection = System.nanoTime();
+        long timeSelection = System.nanoTime() - startSelection;
 
-        long timeSelection = endSelection - startSelection;
-
-        // ---------------- GNOME SORT ----------------
+        // GNOME
+        GnomeSort<Integer> gnomeSort = new GnomeSort<>();
         long startGnome = System.nanoTime();
-        GnomeSort.sort(gnomeArray);
-        long endGnome = System.nanoTime();
+        gnomeSort.sort(gnomeArray);
+        long timeGnome = System.nanoTime() - startGnome;
 
-        long timeGnome = endGnome - startGnome;
+        // MERGE
+        MergeSort<Integer> mergeSort = new MergeSort<>();
+        long startMerge = System.nanoTime();
+        mergeSort.sort(mergeArray);
+        long timeMerge = System.nanoTime() - startMerge;
 
-        // ---------------- MERGE SORT ----------------
+        // QUICK
+        QuickSort<Integer> quickSort = new QuickSort<>();
+        long startQuick = System.nanoTime();
+        quickSort.sort(quickArray);
+        long timeQuick = System.nanoTime() - startQuick;
 
-        // ---------------- QUICK SORT ----------------
-
-        // ---------------- RESULTADOS ----------------
+        // RESULTADOS
         System.out.println("Resultados con n = " + n);
-        System.out.println("Radix Sort (ms): " + timeRadix );
-        System.out.println("Selection Sort (ms): " + timeSelection );
-        System.out.println("Gnome Sort (ms): " + timeGnome );
-
+        System.out.println("Radix Sort (ns): " + timeRadix );
+        System.out.println("Selection Sort (ns): " + timeSelection );
+        System.out.println("Gnome Sort (ns): " + timeGnome );
+        System.out.println("Merge Sort (ns): " + timeMerge );
+        System.out.println("Quick Sort (ns): " + timeQuick );
     }
 }

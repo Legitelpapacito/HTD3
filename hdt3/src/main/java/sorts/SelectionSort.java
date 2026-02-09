@@ -1,4 +1,4 @@
-package hdt3.src.main.java.sorts;
+package sorts;
 public class SelectionSort {
 
     public static <T extends Comparable<T>> void sort(T[] arr) {

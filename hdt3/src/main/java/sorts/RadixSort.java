@@ -1,5 +1,4 @@
-package hdt3.src.main.java.sorts;
-import java.util.Arrays;
+package sorts;
 
 public class RadixSort {
 

@@ -1,9 +1,7 @@
-package edu.uvg.htd3;
+package sorts;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
-
-import edu.uvg.htd3.sorts.RadixSort;
 
 public class RadixSortTest {
 
