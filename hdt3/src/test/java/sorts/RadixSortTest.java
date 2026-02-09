@@ -1,12 +1,14 @@
-package hdt3.src.test.java.sorts;
+package edu.uvg.htd3;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
+
+import edu.uvg.htd3.sorts.RadixSort;
 
 public class RadixSortTest {
 
     @Test
-    void pruebaOrdenamiento() {
+    void ordenaCorrectamente() {
         int[] datos = {170, 45, 75, 90, 802};
 
         RadixSort.sort(datos);
