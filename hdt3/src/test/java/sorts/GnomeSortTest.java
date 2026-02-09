@@ -1,16 +1,19 @@
 package sorts;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
 public class GnomeSortTest {
 
     @Test
     void testGnomeSort() {
-        int[] arr = {5, 3, 2, 4, 1};
-        GnomeSort.sort(arr);
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr);
-    }
+    Integer[] input = {5, 3, 8, 1, 2};
+    Integer[] expected = {1, 2, 3, 5, 8};
+
+    GnomeSort<Integer> sorter = new GnomeSort<>();
+    sorter.sort(input);
+
+    assertArrayEquals(expected, input);
+}
 }
 
 
