@@ -1,17 +1,27 @@
-    package sorts;
+package sorts;
 
-public class GnomeSort {
-    public static void sort(int[] arr) {
-        int i = 0;
-        while (i < arr.length) {
-            if (i == 0 || arr[i] >= arr[i - 1]) {
-                i++;
+public class GnomeSort<T extends Comparable<T>> implements SortAlgorithm<T> {
+
+    @Override
+    public void sort(T[] array) {
+        int index = 0;
+
+        while (index < array.length) {
+            if (index == 0) {
+                index++;
+            } else if (array[index].compareTo(array[index - 1]) >= 0) {
+                index++;
             } else {
-                int temp = arr[i];
-                arr[i] = arr[i - 1];
-                arr[i - 1] = temp;
-                i--;
+                T temp = array[index];
+                array[index] = array[index - 1];
+                array[index - 1] = temp;
+                index--;
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Gnome Sort";
     }
 }
