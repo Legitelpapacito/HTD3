@@ -43,8 +43,8 @@ public class Main {
 
         // ---------------- RESULTADOS ----------------
         System.out.println("Resultados con n = " + n);
-        System.out.println("Radix Sort (ms): " + timeRadix );
-        System.out.println("Selection Sort (ms): " + timeSelection );
+        System.out.println("Radix Sort (ms): " + timeRadix / 1000000);
+        System.out.println("Selection Sort (ms): " + timeSelection / 1000000  );
 
 
     }
